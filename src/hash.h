@@ -9,6 +9,7 @@
 #include <crypto/common.h>
 #include <crypto/ripemd160.h>
 #include <crypto/sha256.h>
+#include <crypto/x16r.h>
 #include <prevector.h>
 #include <serialize.h>
 #include <uint256.h>

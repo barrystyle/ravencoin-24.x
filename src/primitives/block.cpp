@@ -5,12 +5,18 @@
 
 #include <primitives/block.h>
 
+#include <crypto/x16r.h>
 #include <hash.h>
 #include <tinyformat.h>
 
 uint256 CBlockHeader::GetHash() const
 {
-    return SerializeHash(*this);
+    return HashX16R(*this);
+}
+
+uint256 CBlockHeader::GetGenesisHash() const
+{
+    return HashX16R(*this);
 }
 
 std::string CBlock::ToString() const

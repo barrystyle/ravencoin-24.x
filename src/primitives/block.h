@@ -52,6 +52,7 @@ public:
     }
 
     uint256 GetHash() const;
+    uint256 GetGenesisHash() const;
 
     NodeSeconds Time() const
     {

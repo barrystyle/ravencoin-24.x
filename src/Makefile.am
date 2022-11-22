@@ -536,7 +536,30 @@ crypto_libraven_crypto_base_la_SOURCES = \
   crypto/sha512.cpp \
   crypto/sha512.h \
   crypto/siphash.cpp \
-  crypto/siphash.h
+  crypto/siphash.h \
+  crypto/x16r/blake.c \
+  crypto/x16r/bmw.c \
+  crypto/x16r/cubehash.c \
+  crypto/x16r/echo.c \
+  crypto/x16r/extra.c \
+  crypto/x16r/fugue.c \
+  crypto/x16r/gost_streebog.c \
+  crypto/x16r/groestl.c \
+  crypto/x16r/hamsi.c \
+  crypto/x16r/haval.c \
+  crypto/x16r/jh.c \
+  crypto/x16r/keccak.c \
+  crypto/x16r/luffa.c \
+  crypto/x16r/shabal.c \
+  crypto/x16r/shavite.c \
+  crypto/x16r/simd.c \
+  crypto/x16r/skein.c \
+  crypto/x16r/sph_sha2.c \
+  crypto/x16r/sph_sha2big.c \
+  crypto/x16r/tiger.cpp \
+  crypto/x16r/whirlpool.c \
+  crypto/x16r.cpp \
+  crypto/x16rv2.cpp
 
 if USE_ASM
 crypto_libraven_crypto_base_la_SOURCES += crypto/sha256_sse4.cpp
