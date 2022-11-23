@@ -5,13 +5,20 @@
 
 #include <primitives/block.h>
 
+#include <chainparams.h>
 #include <crypto/x16r.h>
 #include <hash.h>
 #include <tinyformat.h>
 
 uint256 CBlockHeader::GetHash() const
 {
-    return HashX16R(*this);
+    const Consensus::Params& params = Params().GetConsensus();
+
+    if (nTime < params.fActivationX16RV2) {
+        return HashX16R(*this);
+    } else if (nTime < params.fActivationKAWPOW) {
+        return HashX16RV2(*this);
+    }
 }
 
 uint256 CBlockHeader::GetGenesisHash() const
