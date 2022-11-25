@@ -226,6 +226,9 @@ public:
           nBits{block.nBits},
           nNonce{block.nNonce}
     {
+          nHeight = block.nHeight;
+          nNonce64 = block.nNonce64;
+          mixHash = block.mixHash;
     }
 
     FlatFilePos GetBlockPos() const EXCLUSIVE_LOCKS_REQUIRED(::cs_main)
