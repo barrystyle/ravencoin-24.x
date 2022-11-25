@@ -6,6 +6,7 @@
 #include <primitives/block.h>
 
 #include <chainparams.h>
+#include <crypto/kawpow.h>
 #include <crypto/x16r.h>
 #include <hash.h>
 #include <tinyformat.h>
@@ -19,11 +20,20 @@ uint256 CBlockHeader::GetHash() const
     } else if (nTime < params.fActivationKAWPOW) {
         return HashX16RV2(*this);
     }
+
+    return HashKAWPOW(*this);
 }
 
 uint256 CBlockHeader::GetGenesisHash() const
 {
     return HashX16R(*this);
+}
+
+bool CBlockHeader::IsKAWPOW() const
+{
+    const Consensus::Params& params = Params().GetConsensus();
+
+    return nTime >= params.fActivationKAWPOW;
 }
 
 std::string CBlock::ToString() const

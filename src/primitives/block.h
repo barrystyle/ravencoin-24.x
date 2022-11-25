@@ -29,12 +29,30 @@ public:
     uint32_t nBits;
     uint32_t nNonce;
 
+    uint32_t nHeight;
+    uint64_t nNonce64;
+    uint256 mixHash;
+
     CBlockHeader()
     {
         SetNull();
     }
 
-    SERIALIZE_METHODS(CBlockHeader, obj) { READWRITE(obj.nVersion, obj.hashPrevBlock, obj.hashMerkleRoot, obj.nTime, obj.nBits, obj.nNonce); }
+    SERIALIZE_METHODS(CBlockHeader, obj)
+    {
+        READWRITE(obj.nVersion);
+        READWRITE(obj.hashPrevBlock);
+        READWRITE(obj.hashMerkleRoot);
+        READWRITE(obj.nTime);
+        READWRITE(obj.nBits);
+        if (!obj.IsKAWPOW()) {
+            READWRITE(obj.nNonce);
+        } else {
+            READWRITE(obj.nHeight);
+            READWRITE(obj.nNonce64);
+            READWRITE(obj.mixHash);
+        }
+    }
 
     void SetNull()
     {
@@ -44,6 +62,9 @@ public:
         nTime = 0;
         nBits = 0;
         nNonce = 0;
+        nHeight = 0;
+        nNonce64 = 0;
+        mixHash.SetNull();
     }
 
     bool IsNull() const
@@ -53,6 +74,7 @@ public:
 
     uint256 GetHash() const;
     uint256 GetGenesisHash() const;
+    bool IsKAWPOW() const;
 
     NodeSeconds Time() const
     {
@@ -112,6 +134,30 @@ public:
     }
 
     std::string ToString() const;
+};
+
+/**
+ * Custom serializer for CBlockHeader that omits the nNonce and mixHash, for use
+ * as input to ProgPow.
+ */
+class CKAWPOWInput : private CBlockHeader
+{
+public:
+    CKAWPOWInput(const CBlockHeader &header)
+    {
+        CBlockHeader::SetNull();
+        *((CBlockHeader*)this) = header;
+    }
+
+    SERIALIZE_METHODS(CKAWPOWInput, obj)
+    {
+        READWRITE(obj.nVersion);
+        READWRITE(obj.hashPrevBlock);
+        READWRITE(obj.hashMerkleRoot);
+        READWRITE(obj.nTime);
+        READWRITE(obj.nBits);
+        READWRITE(obj.nHeight);
+    }
 };
 
 /** Describes a place in the block chain to another node such that if the
