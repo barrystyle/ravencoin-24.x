@@ -559,7 +559,14 @@ crypto_libraven_crypto_base_la_SOURCES = \
   crypto/x16r/tiger.cpp \
   crypto/x16r/whirlpool.c \
   crypto/x16r.cpp \
-  crypto/x16rv2.cpp
+  crypto/x16rv2.cpp \
+  crypto/ethash/lib/ethash/ethash.cpp \
+  crypto/ethash/lib/ethash/primes.c \
+  crypto/ethash/lib/ethash/progpow.cpp \
+  crypto/ethash/lib/keccak/keccak.c \
+  crypto/ethash/lib/keccak/keccakf1600.c \
+  crypto/ethash/lib/keccak/keccakf800.c \
+  crypto/kawpow.cpp
 
 if USE_ASM
 crypto_libraven_crypto_base_la_SOURCES += crypto/sha256_sse4.cpp
