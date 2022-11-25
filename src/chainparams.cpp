@@ -78,6 +78,7 @@ public:
         consensus.powLimit = uint256S("00000fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
         consensus.nPowTargetTimespan = 2016 * 60; // 1.4 days
         consensus.nPowTargetSpacing = 1 * 60;
+        consensus.fActivationDGWV3 = 338778;
         consensus.fActivationX16RV2 = 1569945600;
         consensus.fActivationKAWPOW = 1588788000;
         consensus.fPowAllowMinDifficultyBlocks = false;
@@ -200,6 +201,7 @@ public:
         consensus.powLimit = uint256S("00000fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
         consensus.nPowTargetTimespan = 2016 * 60; // 1.4 days
         consensus.nPowTargetSpacing = 1 * 60;
+        consensus.fActivationDGWV3 = 1;
         consensus.fActivationX16RV2 = 1567533600;
         consensus.fActivationKAWPOW = 1585159200;
         consensus.fPowAllowMinDifficultyBlocks = true;
@@ -407,6 +409,7 @@ public:
         consensus.powLimit = uint256S("7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
         consensus.nPowTargetTimespan = 2016 * 60; // 1.4 days
         consensus.nPowTargetSpacing = 1 * 60;
+        consensus.fActivationDGWV3 = 200;
         consensus.fActivationX16RV2 = 1569931200;
         consensus.fActivationKAWPOW = 3582830167;
         consensus.fPowAllowMinDifficultyBlocks = true;
