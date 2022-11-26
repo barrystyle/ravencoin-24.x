@@ -31,7 +31,7 @@ LIBBITCOIN_CONSENSUS=libraven_consensus.a
 LIBBITCOIN_CLI=libraven_cli.a
 LIBBITCOIN_UTIL=libraven_util.a
 LIBBITCOIN_CRYPTO_BASE=crypto/libraven_crypto_base.la
-LIBBITCOINQT=qt/libbitcoinqt.a
+LIBBITCOINQT=qt/libravenqt.a
 LIBSECP256K1=secp256k1/libsecp256k1.la
 
 if ENABLE_ZMQ
