@@ -69,7 +69,7 @@ unsigned int static DarkGravityWave(const CBlockIndex* pindexLast, const CBlockH
     // change the DGW math.
     if (pblock->nTime >= params.fActivationKAWPOW) {
         if (nKAWPOWBlocksFound != nPastBlocks) {
-            const arith_uint256 bnKawPowLimit = UintToArith256(uint256S("0000000000ffffffffffffffffffffffffffffffffffffffffffffffffffffff"));
+            const arith_uint256 bnKawPowLimit = UintToArith256(params.kawLimit);
             return bnKawPowLimit.GetCompact();
         }
     }
